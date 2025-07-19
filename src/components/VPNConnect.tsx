@@ -6,15 +6,17 @@ import { Badge } from "@/components/ui/badge";
 
 interface VPNConnectProps {
   selectedRegion: string;
+  onConnectionChange?: (connected: boolean) => void;
 }
 
-export function VPNConnect({ selectedRegion }: VPNConnectProps) {
+export function VPNConnect({ selectedRegion, onConnectionChange }: VPNConnectProps) {
   const [isConnected, setIsConnected] = useState(false);
   const [isConnecting, setIsConnecting] = useState(false);
 
   const handleConnect = async () => {
     if (isConnected) {
       setIsConnected(false);
+      onConnectionChange?.(false);
       return;
     }
 
@@ -23,6 +25,7 @@ export function VPNConnect({ selectedRegion }: VPNConnectProps) {
     setTimeout(() => {
       setIsConnected(true);
       setIsConnecting(false);
+      onConnectionChange?.(true);
     }, 2000);
   };
 
@@ -81,21 +84,37 @@ export function VPNConnect({ selectedRegion }: VPNConnectProps) {
       </Card>
 
       {/* Main Connect Button */}
-      <div className="flex justify-center">
+      <div className="flex justify-center relative">
+        {/* Animated Rings */}
+        {isConnected && (
+          <>
+            <div className="absolute inset-0 w-48 h-48 mx-auto rounded-full border-2 border-success/30 animate-ping" />
+            <div className="absolute inset-0 w-56 h-56 mx-auto rounded-full border border-success/20 animate-ping" style={{ animationDelay: '0.5s' }} />
+          </>
+        )}
+        
         <Button
           variant={isConnected ? "vpnSuccess" : "vpnConnect"}
           onClick={handleConnect}
           disabled={isConnecting}
           className={`
-            w-48 h-48 rounded-full text-2xl font-bold shadow-2xl
+            w-48 h-48 rounded-full text-2xl font-bold shadow-2xl relative z-10
             ${isConnecting ? "animate-vpn-pulse" : ""}
-            ${isConnected ? "animate-vpn-connect" : ""}
-            transition-all duration-500 hover:scale-105
+            ${isConnected ? "shadow-vpn-success animate-glow-pulse" : "shadow-vpn-glow hover:shadow-vpn-premium"}
+            transition-all duration-500 hover:scale-105 group
           `}
         >
           <div className="flex flex-col items-center gap-3">
-            {getConnectionIcon()}
-            <span>
+            <div className="relative">
+              {getConnectionIcon()}
+              {/* Data flow indicators when connected */}
+              {isConnected && (
+                <div className="absolute -inset-4">
+                  <div className="w-8 h-8 border-2 border-success/50 rounded-full animate-ping" />
+                </div>
+              )}
+            </div>
+            <span className="group-hover:text-shadow-lg">
               {isConnecting ? "Connecting..." : isConnected ? "Disconnect" : "Connect"}
             </span>
           </div>

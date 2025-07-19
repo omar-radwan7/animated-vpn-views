@@ -77,14 +77,18 @@ export default {
 			backgroundImage: {
 				'vpn-gradient-primary': 'var(--vpn-gradient-primary)',
 				'vpn-gradient-success': 'var(--vpn-gradient-success)',
-				'vpn-gradient-hero': 'var(--vpn-gradient-hero)'
+				'vpn-gradient-hero': 'var(--vpn-gradient-hero)',
+				'vpn-gradient-cyber': 'var(--vpn-gradient-cyber)',
+				'vpn-gradient-glass': 'var(--vpn-gradient-glass)'
 			},
 			boxShadow: {
 				'vpn-glow': 'var(--vpn-shadow-glow)',
-				'vpn-success': 'var(--vpn-shadow-success)'
+				'vpn-success': 'var(--vpn-shadow-success)',
+				'vpn-premium': 'var(--vpn-shadow-premium)'
 			},
 			transitionProperty: {
-				'vpn': 'var(--vpn-transition)'
+				'vpn': 'var(--vpn-transition)',
+				'vpn-bounce': 'var(--vpn-transition-bounce)'
 			},
 			keyframes: {
 				'accordion-down': {
@@ -136,6 +140,49 @@ export default {
 						opacity: '1',
 						transform: 'translateY(0)'
 					}
+				},
+				'slide-in-left': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateX(-50px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateX(0)'
+					}
+				},
+				'slide-in-right': {
+					'0%': {
+						opacity: '0',
+						transform: 'translateX(50px)'
+					},
+					'100%': {
+						opacity: '1',
+						transform: 'translateX(0)'
+					}
+				},
+				'glow-pulse': {
+					'0%, 100%': {
+						boxShadow: 'var(--vpn-shadow-glow)',
+						transform: 'scale(1)'
+					},
+					'50%': {
+						boxShadow: 'var(--vpn-shadow-premium)',
+						transform: 'scale(1.02)'
+					}
+				},
+				'data-flow': {
+					'0%': {
+						transform: 'translateX(-100%)',
+						opacity: '0'
+					},
+					'50%': {
+						opacity: '1'
+					},
+					'100%': {
+						transform: 'translateX(100%)',
+						opacity: '0'
+					}
 				}
 			},
 			animation: {
@@ -143,7 +190,11 @@ export default {
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'vpn-pulse': 'vpn-pulse 2s ease-in-out infinite',
 				'vpn-connect': 'vpn-connect 0.6s ease-out',
-				'fade-in-up': 'fade-in-up 0.6s ease-out'
+				'fade-in-up': 'fade-in-up 0.6s ease-out',
+				'slide-in-left': 'slide-in-left 0.6s ease-out',
+				'slide-in-right': 'slide-in-right 0.6s ease-out',
+				'glow-pulse': 'glow-pulse 3s ease-in-out infinite',
+				'data-flow': 'data-flow 2s ease-in-out infinite'
 			}
 		}
 	},

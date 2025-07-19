@@ -2,70 +2,148 @@ import { useState } from "react";
 import { VPNHeader } from "@/components/VPNHeader";
 import { VPNConnect } from "@/components/VPNConnect";
 import { RegionSelector } from "@/components/RegionSelector";
+import { SpeedTest } from "@/components/SpeedTest";
+import { ConnectionStats } from "@/components/ConnectionStats";
+import { PremiumFeatures } from "@/components/PremiumFeatures";
+import heroImage from "@/assets/vpn-hero.jpg";
 
 const Index = () => {
   const [selectedRegion, setSelectedRegion] = useState("us-east");
+  const [isConnected, setIsConnected] = useState(false);
 
   return (
-    <div className="min-h-screen bg-vpn-gradient-hero">
-      <VPNHeader />
-      
-      <main className="container mx-auto px-4 py-8">
-        <div className="max-w-2xl mx-auto space-y-8">
+    <div className="min-h-screen relative">
+      {/* Hero Background with Overlay */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${heroImage})` }}
+      >
+        <div className="absolute inset-0 bg-vpn-gradient-cyber opacity-90" />
+        <div className="absolute inset-0 bg-background/40" />
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10">
+        <VPNHeader />
+        
+        <main className="container mx-auto px-4 py-8">
           {/* Hero Section */}
-          <div className="text-center space-y-4 animate-fade-in-up">
-            <h1 className="text-4xl md:text-5xl font-bold bg-vpn-gradient-primary bg-clip-text text-transparent">
-              Secure VPN Connection
+          <div className="text-center space-y-6 mb-12 animate-fade-in-up">
+            <h1 className="text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-primary-glow to-success-glow">
+              SecureVPN
             </h1>
-            <p className="text-xl text-muted-foreground max-w-md mx-auto">
-              Protect your privacy and browse securely with our premium VPN service
+            <p className="text-xl md:text-2xl text-foreground/90 max-w-2xl mx-auto font-medium">
+              Military-grade encryption • Global servers • Zero logs
             </p>
-          </div>
-
-          {/* Region Selector */}
-          <div className="animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
-            <RegionSelector 
-              selectedRegion={selectedRegion}
-              onRegionChange={setSelectedRegion}
-            />
-          </div>
-
-          {/* VPN Connect Component */}
-          <div className="animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
-            <VPNConnect selectedRegion={selectedRegion} />
-          </div>
-
-          {/* Features Grid */}
-          <div className="grid md:grid-cols-3 gap-4 mt-12 animate-fade-in-up" style={{ animationDelay: "0.6s" }}>
-            {[
-              {
-                title: "Military-Grade Encryption",
-                description: "AES-256 encryption protects your data",
-                icon: "🔒"
-              },
-              {
-                title: "No-Log Policy",
-                description: "We never track or store your activity",
-                icon: "🕵️"
-              },
-              {
-                title: "Global Servers",
-                description: "Access content from anywhere in the world",
-                icon: "🌍"
-              }
-            ].map((feature, index) => (
-              <div 
-                key={feature.title}
-                className="p-6 bg-card/30 backdrop-blur-sm rounded-lg border border-border/50 text-center hover:bg-card/50 transition-all duration-300"
-              >
-                <div className="text-3xl mb-3">{feature.icon}</div>
-                <h3 className="font-semibold mb-2">{feature.title}</h3>
-                <p className="text-sm text-muted-foreground">{feature.description}</p>
+            <div className="flex items-center justify-center gap-4 text-sm text-foreground/70">
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-success rounded-full animate-vpn-pulse" />
+                <span>256-bit AES Encryption</span>
               </div>
-            ))}
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-primary-glow rounded-full animate-vpn-pulse" style={{ animationDelay: '0.5s' }} />
+                <span>60+ Countries</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-2 h-2 bg-yellow-500 rounded-full animate-vpn-pulse" style={{ animationDelay: '1s' }} />
+                <span>10M+ Users</span>
+              </div>
+            </div>
           </div>
-        </div>
-      </main>
+
+          {/* Main Dashboard Grid */}
+          <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            {/* Left Column - Controls */}
+            <div className="lg:col-span-1 space-y-6">
+              <div className="animate-slide-in-left">
+                <RegionSelector 
+                  selectedRegion={selectedRegion}
+                  onRegionChange={setSelectedRegion}
+                />
+              </div>
+              
+              <div className="animate-slide-in-left" style={{ animationDelay: "0.2s" }}>
+                <PremiumFeatures />
+              </div>
+            </div>
+
+            {/* Center Column - Main Connection */}
+            <div className="lg:col-span-1 space-y-6">
+              <div className="animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
+                <VPNConnect 
+                  selectedRegion={selectedRegion} 
+                  onConnectionChange={setIsConnected}
+                />
+              </div>
+            </div>
+
+            {/* Right Column - Analytics */}
+            <div className="lg:col-span-1 space-y-6">
+              <div className="animate-slide-in-right">
+                <SpeedTest isConnected={isConnected} />
+              </div>
+              
+              <div className="animate-slide-in-right" style={{ animationDelay: "0.2s" }}>
+                <ConnectionStats 
+                  isConnected={isConnected}
+                  selectedRegion={selectedRegion}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Trust Indicators */}
+          <div className="mt-16 max-w-5xl mx-auto animate-fade-in-up" style={{ animationDelay: "0.8s" }}>
+            <div className="grid md:grid-cols-4 gap-6">
+              {[
+                {
+                  title: "Zero Logs",
+                  description: "Independently audited no-logs policy",
+                  icon: "🛡️",
+                  accent: "success"
+                },
+                {
+                  title: "Kill Switch",
+                  description: "Automatic protection if connection drops",
+                  icon: "⚡",
+                  accent: "primary"
+                },
+                {
+                  title: "DNS Protection",
+                  description: "Secure DNS to prevent leaks",
+                  icon: "🔒",
+                  accent: "yellow"
+                },
+                {
+                  title: "24/7 Support",
+                  description: "Expert help whenever you need it",
+                  icon: "💬",
+                  accent: "blue"
+                }
+              ].map((feature, index) => (
+                <div 
+                  key={feature.title}
+                  className="p-6 bg-card/20 backdrop-blur-sm rounded-xl border border-border/30 text-center hover:bg-card/40 transition-all duration-500 hover:scale-105 hover:shadow-vpn-glow group"
+                  style={{ animationDelay: `${1 + index * 0.1}s` }}
+                >
+                  <div className="text-4xl mb-4 group-hover:animate-vpn-pulse">{feature.icon}</div>
+                  <h3 className="font-bold mb-2 text-foreground">{feature.title}</h3>
+                  <p className="text-sm text-foreground/70">{feature.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Data Flow Animation */}
+          <div className="mt-12 relative">
+            <div className="absolute inset-0 opacity-30">
+              <div className="w-full h-1 bg-gradient-to-r from-transparent via-primary-glow to-transparent relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-20 h-full bg-gradient-to-r from-transparent via-white to-transparent animate-data-flow" />
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
     </div>
   );
 };
