@@ -49,7 +49,7 @@ export default function Profile() {
         <div className="flex items-center gap-4 mb-8">
           <Button 
             variant="ghost" 
-            onClick={() => navigate('/')}
+            onClick={() => navigate('/dashboard')}
             className="hover:bg-accent/50"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
