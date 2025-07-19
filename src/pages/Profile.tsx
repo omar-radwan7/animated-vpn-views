@@ -17,7 +17,7 @@ export default function Profile() {
     email: "alex.johnson@email.com",
     phone: "+1 (555) 123-4567",
     joinDate: "January 2024",
-    plan: "Premium",
+    plan: "Free Forever",
     avatar: ""
   });
 
@@ -40,7 +40,9 @@ export default function Profile() {
   ];
 
   return (
-    <div className="min-h-screen bg-vpn-gradient-hero">
+    <div className="min-h-screen bg-vpn-gradient-cyber relative">
+      <div className="absolute inset-0 bg-background/50" />
+      <div className="relative z-10">
       <VPNHeader />
       
       <div className="container mx-auto px-4 py-8 max-w-4xl">
@@ -107,7 +109,7 @@ export default function Profile() {
                 <div>
                   <h3 className="text-xl font-semibold">{profile.name}</h3>
                   <Badge className="bg-success text-success-foreground">
-                    {profile.plan} Plan
+                    {profile.plan}
                   </Badge>
                 </div>
               </div>
@@ -217,7 +219,7 @@ export default function Profile() {
                 { action: "Connected to", location: "New York, US", time: "2 hours ago" },
                 { action: "Disconnected from", location: "London, UK", time: "5 hours ago" },
                 { action: "Connected to", location: "Tokyo, JP", time: "1 day ago" },
-                { action: "Plan upgraded to", location: "Premium", time: "3 days ago" },
+                { action: "Plan upgraded to", location: "Free Forever", time: "3 days ago" },
               ].map((activity, index) => (
                 <div 
                   key={index}
@@ -235,6 +237,7 @@ export default function Profile() {
           </CardContent>
         </Card>
       </div>
+    </div>
     </div>
   );
 }

@@ -17,7 +17,6 @@ interface Region {
   flag: string;
   ping: number;
   load: number;
-  premium?: boolean;
 }
 
 const regions: Region[] = [
@@ -25,10 +24,10 @@ const regions: Region[] = [
   { id: "us-west", name: "Los Angeles", country: "United States", flag: "🇺🇸", ping: 32, load: 38 },
   { id: "uk", name: "London", country: "United Kingdom", flag: "🇬🇧", ping: 48, load: 52 },
   { id: "de", name: "Frankfurt", country: "Germany", flag: "🇩🇪", ping: 41, load: 35 },
-  { id: "jp", name: "Tokyo", country: "Japan", flag: "🇯🇵", ping: 68, load: 28, premium: true },
+  { id: "jp", name: "Tokyo", country: "Japan", flag: "🇯🇵", ping: 68, load: 28 },
   { id: "au", name: "Sydney", country: "Australia", flag: "🇦🇺", ping: 85, load: 41 },
   { id: "ca", name: "Toronto", country: "Canada", flag: "🇨🇦", ping: 29, load: 33 },
-  { id: "sg", name: "Singapore", country: "Singapore", flag: "🇸🇬", ping: 72, load: 44, premium: true },
+  { id: "sg", name: "Singapore", country: "Singapore", flag: "🇸🇬", ping: 72, load: 44 },
   { id: "nl", name: "Amsterdam", country: "Netherlands", flag: "🇳🇱", ping: 43, load: 39 },
   { id: "fr", name: "Paris", country: "France", flag: "🇫🇷", ping: 46, load: 47 },
 ];
@@ -95,13 +94,8 @@ export function RegionSelector({ selectedRegion, onRegionChange }: RegionSelecto
                   <div className="flex items-center gap-3">
                     <span className="text-2xl">{region.flag}</span>
                     <div>
-                      <div className="font-medium flex items-center gap-2">
+                      <div className="font-medium">
                         {region.name}
-                        {region.premium && (
-                          <Badge variant="secondary" className="text-xs px-1.5 py-0.5">
-                            Pro
-                          </Badge>
-                        )}
                       </div>
                       <div className="text-xs text-muted-foreground">{region.country}</div>
                     </div>

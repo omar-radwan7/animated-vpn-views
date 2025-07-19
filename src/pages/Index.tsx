@@ -4,24 +4,16 @@ import { VPNConnect } from "@/components/VPNConnect";
 import { RegionSelector } from "@/components/RegionSelector";
 import { SpeedTest } from "@/components/SpeedTest";
 import { ConnectionStats } from "@/components/ConnectionStats";
-import { PremiumFeatures } from "@/components/PremiumFeatures";
-import heroImage from "@/assets/vpn-hero.jpg";
 
 const Index = () => {
   const [selectedRegion, setSelectedRegion] = useState("us-east");
   const [isConnected, setIsConnected] = useState(false);
 
   return (
-    <div className="min-h-screen relative">
-      {/* Hero Background with Overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      >
-        <div className="absolute inset-0 bg-vpn-gradient-cyber opacity-90" />
-        <div className="absolute inset-0 bg-background/40" />
-      </div>
-
+    <div className="min-h-screen relative bg-vpn-gradient-cyber">
+      {/* Gradient Overlay for depth */}
+      <div className="absolute inset-0 bg-background/50" />
+      
       {/* Content */}
       <div className="relative z-10">
         <VPNHeader />
@@ -33,7 +25,7 @@ const Index = () => {
               SecureVPN
             </h1>
             <p className="text-xl md:text-2xl text-foreground/90 max-w-2xl mx-auto font-medium">
-              Military-grade encryption • Global servers • Zero logs
+              Free VPN • Military-grade encryption • Global servers • Zero logs
             </p>
             <div className="flex items-center justify-center gap-4 text-sm text-foreground/70">
               <div className="flex items-center gap-2">
@@ -45,16 +37,16 @@ const Index = () => {
                 <span>60+ Countries</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-yellow-500 rounded-full animate-vpn-pulse" style={{ animationDelay: '1s' }} />
-                <span>10M+ Users</span>
+                <div className="w-2 h-2 bg-success rounded-full animate-vpn-pulse" style={{ animationDelay: '1s' }} />
+                <span>100% Free Forever</span>
               </div>
             </div>
           </div>
 
           {/* Main Dashboard Grid */}
-          <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            {/* Left Column - Controls */}
-            <div className="lg:col-span-1 space-y-6">
+          <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {/* Left Column - Controls & Analytics */}
+            <div className="space-y-6">
               <div className="animate-slide-in-left">
                 <RegionSelector 
                   selectedRegion={selectedRegion}
@@ -63,24 +55,17 @@ const Index = () => {
               </div>
               
               <div className="animate-slide-in-left" style={{ animationDelay: "0.2s" }}>
-                <PremiumFeatures />
+                <SpeedTest isConnected={isConnected} />
               </div>
             </div>
 
-            {/* Center Column - Main Connection */}
-            <div className="lg:col-span-1 space-y-6">
+            {/* Right Column - Connection & Stats */}
+            <div className="space-y-6">
               <div className="animate-fade-in-up" style={{ animationDelay: "0.3s" }}>
                 <VPNConnect 
                   selectedRegion={selectedRegion} 
                   onConnectionChange={setIsConnected}
                 />
-              </div>
-            </div>
-
-            {/* Right Column - Analytics */}
-            <div className="lg:col-span-1 space-y-6">
-              <div className="animate-slide-in-right">
-                <SpeedTest isConnected={isConnected} />
               </div>
               
               <div className="animate-slide-in-right" style={{ animationDelay: "0.2s" }}>
@@ -97,33 +82,33 @@ const Index = () => {
             <div className="grid md:grid-cols-4 gap-6">
               {[
                 {
-                  title: "Zero Logs",
-                  description: "Independently audited no-logs policy",
-                  icon: "🛡️",
+                  title: "Always Free",
+                  description: "No premium tiers, completely free forever",
+                  icon: "💚",
                   accent: "success"
                 },
                 {
-                  title: "Kill Switch",
-                  description: "Automatic protection if connection drops",
-                  icon: "⚡",
+                  title: "Zero Logs",
+                  description: "We never track or store your activity",
+                  icon: "🛡️",
                   accent: "primary"
                 },
                 {
-                  title: "DNS Protection",
-                  description: "Secure DNS to prevent leaks",
-                  icon: "🔒",
-                  accent: "yellow"
+                  title: "Global Servers",
+                  description: "Access 60+ servers in 20+ countries",
+                  icon: "🌍",
+                  accent: "blue"
                 },
                 {
                   title: "24/7 Support",
                   description: "Expert help whenever you need it",
                   icon: "💬",
-                  accent: "blue"
+                  accent: "yellow"
                 }
               ].map((feature, index) => (
                 <div 
                   key={feature.title}
-                  className="p-6 bg-card/20 backdrop-blur-sm rounded-xl border border-border/30 text-center hover:bg-card/40 transition-all duration-500 hover:scale-105 hover:shadow-vpn-glow group"
+                  className="p-6 bg-vpn-gradient-glass backdrop-blur-sm rounded-xl border border-border/30 text-center hover:bg-card/40 transition-all duration-500 hover:scale-105 hover:shadow-vpn-glow group"
                   style={{ animationDelay: `${1 + index * 0.1}s` }}
                 >
                   <div className="text-4xl mb-4 group-hover:animate-vpn-pulse">{feature.icon}</div>
