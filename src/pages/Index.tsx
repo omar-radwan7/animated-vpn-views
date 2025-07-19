@@ -4,6 +4,7 @@ import { VPNConnect } from "@/components/VPNConnect";
 import { RegionSelector } from "@/components/RegionSelector";
 import { SpeedTest } from "@/components/SpeedTest";
 import { ConnectionStats } from "@/components/ConnectionStats";
+import { Footer } from "@/components/Footer";
 
 const Index = () => {
   const [selectedRegion, setSelectedRegion] = useState("us-east");
@@ -128,6 +129,8 @@ const Index = () => {
             </div>
           </div>
         </main>
+        
+        <Footer />
       </div>
     </div>
   );

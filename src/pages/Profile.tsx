@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowLeft, Edit2, Save, X, User, Mail, Phone, Calendar, Shield, Clock } from "lucide-react";
+import { ArrowLeft, Edit2, Save, X, User, Mail, Calendar, Shield, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -8,6 +8,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { useNavigate } from "react-router-dom";
 import { VPNHeader } from "@/components/VPNHeader";
+import { Footer } from "@/components/Footer";
 
 export default function Profile() {
   const navigate = useNavigate();
@@ -15,7 +16,6 @@ export default function Profile() {
   const [profile, setProfile] = useState({
     name: "Alex Johnson",
     email: "alex.johnson@email.com",
-    phone: "+1 (555) 123-4567",
     joinDate: "January 2024",
     plan: "Free Forever",
     avatar: ""
@@ -152,23 +152,6 @@ export default function Profile() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="phone" className="flex items-center gap-2">
-                    <Phone className="h-4 w-4" />
-                    Phone Number
-                  </Label>
-                  {isEditing ? (
-                    <Input
-                      id="phone"
-                      value={editProfile.phone}
-                      onChange={(e) => setEditProfile(prev => ({ ...prev, phone: e.target.value }))}
-                      className="bg-background/50"
-                    />
-                  ) : (
-                    <div className="p-3 bg-muted/50 rounded-md">{profile.phone}</div>
-                  )}
-                </div>
-
-                <div className="space-y-2">
                   <Label className="flex items-center gap-2">
                     <Calendar className="h-4 w-4" />
                     Member Since
@@ -219,7 +202,6 @@ export default function Profile() {
                 { action: "Connected to", location: "New York, US", time: "2 hours ago" },
                 { action: "Disconnected from", location: "London, UK", time: "5 hours ago" },
                 { action: "Connected to", location: "Tokyo, JP", time: "1 day ago" },
-                { action: "Plan upgraded to", location: "Free Forever", time: "3 days ago" },
               ].map((activity, index) => (
                 <div 
                   key={index}
@@ -236,6 +218,8 @@ export default function Profile() {
             </div>
           </CardContent>
         </Card>
+        
+        <Footer />
       </div>
     </div>
     </div>
