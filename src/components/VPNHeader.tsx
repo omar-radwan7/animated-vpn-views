@@ -26,7 +26,7 @@ export function VPNHeader() {
   return (
     <header className="border-b bg-card/50 backdrop-blur-sm sticky top-0 z-50">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
-        <div className="flex items-center gap-2 cursor-pointer" onClick={() => navigate('/')}>
+        <div className="flex items-center gap-2 cursor-pointer" onClick={() => navigate(isAuthenticated ? '/dashboard' : '/')}>
           <Shield className="h-8 w-8 text-primary" />
           <span className="text-xl font-bold bg-vpn-gradient-primary bg-clip-text text-transparent">
             SecureVPN

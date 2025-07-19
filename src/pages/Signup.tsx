@@ -60,8 +60,8 @@ export default function Signup() {
       // Simulate API call
       await new Promise(resolve => setTimeout(resolve, 2000));
       
-      // On successful signup, redirect to dashboard or login
-      navigate('/');
+      // On successful signup, redirect to dashboard
+      navigate('/dashboard');
     } catch (error) {
       console.error("Signup failed:", error);
       // Handle signup error (show toast, error message, etc.)

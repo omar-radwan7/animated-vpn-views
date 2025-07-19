@@ -6,7 +6,7 @@ import { SpeedTest } from "@/components/SpeedTest";
 import { ConnectionStats } from "@/components/ConnectionStats";
 import { Footer } from "@/components/Footer";
 
-const Index = () => {
+const Dashboard = () => {
   const [selectedRegion, setSelectedRegion] = useState("us-east");
   const [isConnected, setIsConnected] = useState(false);
 
@@ -136,4 +136,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Dashboard;

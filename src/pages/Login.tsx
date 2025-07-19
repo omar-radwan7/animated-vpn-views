@@ -27,7 +27,7 @@ export default function Login() {
       await new Promise(resolve => setTimeout(resolve, 1500));
       
       // On successful login, redirect to dashboard
-      navigate('/');
+      navigate('/dashboard');
     } catch (error) {
       console.error("Login failed:", error);
       // Handle login error (show toast, error message, etc.)
