@@ -80,7 +80,7 @@ const Dashboard = () => {
 
           {/* Trust Indicators */}
           <div className="mt-16 max-w-5xl mx-auto animate-fade-in-up" style={{ animationDelay: "0.8s" }}>
-            <div className="grid md:grid-cols-4 gap-6">
+            <div className="grid md:grid-cols-3 gap-6">
               {[
                 {
                   title: "Always Free",
@@ -99,12 +99,6 @@ const Dashboard = () => {
                   description: "Access 60+ servers in 20+ countries",
                   icon: "🌍",
                   accent: "blue"
-                },
-                {
-                  title: "24/7 Support",
-                  description: "Expert help whenever you need it",
-                  icon: "💬",
-                  accent: "yellow"
                 }
               ].map((feature, index) => (
                 <div 
