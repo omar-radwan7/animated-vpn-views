@@ -1,5 +1,6 @@
+
 import { useState } from "react";
-import { Eye, EyeOff, Mail, Lock, ArrowRight, Shield } from "lucide-react";
+import { Eye, EyeOff, Mail, Lock, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
