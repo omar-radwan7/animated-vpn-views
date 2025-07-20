@@ -48,17 +48,6 @@ export default function Login() {
       <div className="absolute inset-0 bg-background/50" />
       
       <div className="relative z-10 w-full max-w-md">
-        {/* Logo Section */}
-        <div className="text-center mb-8 animate-fade-in-up">
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <Shield className="h-12 w-12 text-primary-glow" />
-            <span className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-primary-glow to-success-glow">
-              SecureVPN
-            </span>
-          </div>
-          <p className="text-foreground/70">Welcome back! Sign in to your account</p>
-        </div>
-
         {/* Login Form */}
         <Card className="border-0 bg-vpn-gradient-glass backdrop-blur-sm shadow-vpn-premium animate-slide-in-up">
           <CardHeader className="text-center pb-4">
