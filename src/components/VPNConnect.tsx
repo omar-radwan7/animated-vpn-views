@@ -31,11 +31,6 @@ export function VPNConnect({ selectedRegion, onConnectionChange }: VPNConnectPro
       setIsConnected(true);
       setIsConnecting(false);
       onConnectionChange?.(true);
-      
-      // Hide world map after 3 seconds
-      setTimeout(() => {
-        setShowWorldMap(false);
-      }, 3000);
     }, 2000);
   };
 
@@ -148,12 +143,6 @@ export function VPNConnect({ selectedRegion, onConnectionChange }: VPNConnectPro
         </Card>
       )}
 
-      {/* World Map Modal */}
-      <WorldMap 
-        isVisible={showWorldMap}
-        selectedRegion={selectedRegion}
-        isConnected={isConnected}
-      />
     </div>
   );
 }
