@@ -3,6 +3,7 @@ import { Power, Wifi, WifiOff, Shield, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { WorldMap } from "./WorldMap";
 
 interface VPNConnectProps {
   selectedRegion: string;
@@ -12,20 +13,29 @@ interface VPNConnectProps {
 export function VPNConnect({ selectedRegion, onConnectionChange }: VPNConnectProps) {
   const [isConnected, setIsConnected] = useState(false);
   const [isConnecting, setIsConnecting] = useState(false);
+  const [showWorldMap, setShowWorldMap] = useState(false);
 
   const handleConnect = async () => {
     if (isConnected) {
       setIsConnected(false);
+      setShowWorldMap(false);
       onConnectionChange?.(false);
       return;
     }
 
     setIsConnecting(true);
+    setShowWorldMap(true);
+    
     // Simulate connection delay
     setTimeout(() => {
       setIsConnected(true);
       setIsConnecting(false);
       onConnectionChange?.(true);
+      
+      // Hide world map after 3 seconds
+      setTimeout(() => {
+        setShowWorldMap(false);
+      }, 3000);
     }, 2000);
   };
 
@@ -137,6 +147,13 @@ export function VPNConnect({ selectedRegion, onConnectionChange }: VPNConnectPro
           </CardContent>
         </Card>
       )}
+
+      {/* World Map Modal */}
+      <WorldMap 
+        isVisible={showWorldMap}
+        selectedRegion={selectedRegion}
+        isConnected={isConnected}
+      />
     </div>
   );
 }
