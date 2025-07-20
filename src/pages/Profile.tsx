@@ -108,9 +108,6 @@ export default function Profile() {
                 </Avatar>
                 <div>
                   <h3 className="text-xl font-semibold">{profile.name}</h3>
-                  <Badge className="bg-success text-success-foreground">
-                    {profile.plan}
-                  </Badge>
                 </div>
               </div>
 
