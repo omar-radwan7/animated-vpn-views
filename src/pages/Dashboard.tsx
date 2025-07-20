@@ -5,7 +5,6 @@ import { RegionSelector } from "@/components/RegionSelector";
 import { SpeedTest } from "@/components/SpeedTest";
 import { ConnectionStats } from "@/components/ConnectionStats";
 import { Footer } from "@/components/Footer";
-import { WorldMap } from "@/components/WorldMap";
 
 const Dashboard = () => {
   const [selectedRegion, setSelectedRegion] = useState("us-east");
@@ -77,16 +76,6 @@ const Dashboard = () => {
                 />
               </div>
             </div>
-          </div>
-
-          {/* World Map */}
-          <div className="mt-12 max-w-6xl mx-auto animate-fade-in-up" style={{ animationDelay: "0.6s" }}>
-            <WorldMap 
-              isVisible={isConnected}
-              selectedRegion={selectedRegion}
-              isConnected={isConnected}
-              inline={true}
-            />
           </div>
 
           {/* Trust Indicators */}
