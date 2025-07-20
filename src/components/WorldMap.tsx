@@ -73,40 +73,126 @@ export function WorldMap({ isVisible, selectedRegion, isConnected, inline = fals
           {/* World Map */}
           <div className="flex-1 relative bg-gradient-to-br from-slate-900/30 to-slate-800/30 p-6">
             <div className="relative h-80 w-full">
-              {/* World Map SVG with more realistic shapes */}
+              {/* Dotted World Map */}
               <svg viewBox="0 0 1000 500" className="w-full h-full">
-                {/* World continents - more detailed and realistic */}
-                <g fill="rgba(100, 116, 139, 0.3)" stroke="rgba(100, 116, 139, 0.5)" strokeWidth="0.5">
-                  {/* North America */}
-                  <path d="M50,150 C70,130 90,125 120,130 L160,135 C200,140 230,150 260,170 L290,190 C310,210 315,240 310,270 L300,300 C285,320 260,330 230,325 L200,320 C170,315 140,305 110,290 L80,270 C60,245 50,210 50,180 Z" />
-                  <path d="M270,120 C290,115 310,120 325,135 L340,150 C350,170 345,190 335,200 L320,210 C305,215 290,210 280,195 L275,175 C270,155 270,135 270,120 Z" />
-                  
-                  {/* South America */}
-                  <path d="M220,330 C240,325 255,335 265,350 L275,380 C280,420 275,460 270,485 L265,500 C245,505 225,500 215,485 L205,460 C200,420 205,380 210,350 L215,335 Z" />
-                  
-                  {/* Europe */}
-                  <path d="M450,120 C470,115 490,120 510,125 L530,130 C545,140 550,155 545,170 L540,185 C525,195 505,200 485,195 L465,190 C450,180 445,165 445,150 L450,135 Z" />
-                  
-                  {/* Africa */}
-                  <path d="M450,200 C470,195 490,200 510,210 L530,225 C540,250 545,280 540,310 L535,340 C530,370 520,395 505,410 L485,420 C465,415 450,395 445,375 L440,345 C435,315 440,285 445,255 L450,225 Z" />
-                  
-                  {/* Asia */}
-                  <path d="M550,110 C580,105 620,110 660,115 L700,120 C740,125 780,135 820,150 L860,170 C880,190 885,220 880,250 L875,280 C865,305 845,320 820,325 L780,330 C740,325 700,320 660,315 L620,310 C580,305 550,295 540,275 L535,245 C535,205 540,165 545,135 Z" />
-                  
-                  {/* Australia */}
-                  <path d="M780,360 C800,355 820,360 835,370 L850,380 C855,395 850,410 840,420 L825,430 C810,435 795,430 785,420 L775,410 C770,395 775,380 780,370 Z" />
-                  
-                  {/* Greenland */}
-                  <path d="M320,80 C335,75 350,80 360,95 L365,110 C360,125 350,135 335,140 L320,135 C305,130 300,115 305,100 L310,85 Z" />
-                </g>
-                
-                {/* Grid lines for professional look */}
+                {/* Grid background */}
                 <defs>
-                  <pattern id="grid" width="50" height="25" patternUnits="userSpaceOnUse">
-                    <path d="M 50 0 L 0 0 0 25" fill="none" stroke="rgba(100, 116, 139, 0.1)" strokeWidth="0.5"/>
+                  <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <circle cx="10" cy="10" r="0.5" fill="rgba(100, 116, 139, 0.2)" />
                   </pattern>
                 </defs>
                 <rect width="100%" height="100%" fill="url(#grid)" />
+
+                {/* Dotted continents */}
+                <g>
+                  {/* North America dots */}
+                  {Array.from({ length: 80 }).map((_, i) => {
+                    const x = 50 + (i % 12) * 15 + Math.random() * 10;
+                    const y = 140 + Math.floor(i / 12) * 12 + Math.random() * 8;
+                    const size = Math.random() * 1.5 + 0.5;
+                    return (
+                      <circle
+                        key={`na-${i}`}
+                        cx={x}
+                        cy={y}
+                        r={size}
+                        fill="rgba(59, 130, 246, 0.6)"
+                        className="animate-pulse"
+                        style={{ animationDelay: `${i * 50}ms` }}
+                      />
+                    );
+                  })}
+
+                  {/* Europe dots */}
+                  {Array.from({ length: 50 }).map((_, i) => {
+                    const x = 450 + (i % 8) * 12 + Math.random() * 8;
+                    const y = 120 + Math.floor(i / 8) * 10 + Math.random() * 6;
+                    const size = Math.random() * 1.5 + 0.5;
+                    return (
+                      <circle
+                        key={`eu-${i}`}
+                        cx={x}
+                        cy={y}
+                        r={size}
+                        fill="rgba(59, 130, 246, 0.6)"
+                        className="animate-pulse"
+                        style={{ animationDelay: `${i * 60}ms` }}
+                      />
+                    );
+                  })}
+
+                  {/* Asia dots */}
+                  {Array.from({ length: 120 }).map((_, i) => {
+                    const x = 550 + (i % 20) * 15 + Math.random() * 12;
+                    const y = 110 + Math.floor(i / 20) * 15 + Math.random() * 10;
+                    const size = Math.random() * 1.5 + 0.5;
+                    return (
+                      <circle
+                        key={`as-${i}`}
+                        cx={x}
+                        cy={y}
+                        r={size}
+                        fill="rgba(59, 130, 246, 0.6)"
+                        className="animate-pulse"
+                        style={{ animationDelay: `${i * 40}ms` }}
+                      />
+                    );
+                  })}
+
+                  {/* Africa dots */}
+                  {Array.from({ length: 90 }).map((_, i) => {
+                    const x = 450 + (i % 10) * 12 + Math.random() * 8;
+                    const y = 200 + Math.floor(i / 10) * 18 + Math.random() * 12;
+                    const size = Math.random() * 1.5 + 0.5;
+                    return (
+                      <circle
+                        key={`af-${i}`}
+                        cx={x}
+                        cy={y}
+                        r={size}
+                        fill="rgba(59, 130, 246, 0.6)"
+                        className="animate-pulse"
+                        style={{ animationDelay: `${i * 45}ms` }}
+                      />
+                    );
+                  })}
+
+                  {/* South America dots */}
+                  {Array.from({ length: 60 }).map((_, i) => {
+                    const x = 220 + (i % 6) * 10 + Math.random() * 6;
+                    const y = 330 + Math.floor(i / 6) * 15 + Math.random() * 10;
+                    const size = Math.random() * 1.5 + 0.5;
+                    return (
+                      <circle
+                        key={`sa-${i}`}
+                        cx={x}
+                        cy={y}
+                        r={size}
+                        fill="rgba(59, 130, 246, 0.6)"
+                        className="animate-pulse"
+                        style={{ animationDelay: `${i * 55}ms` }}
+                      />
+                    );
+                  })}
+
+                  {/* Australia dots */}
+                  {Array.from({ length: 30 }).map((_, i) => {
+                    const x = 780 + (i % 8) * 10 + Math.random() * 6;
+                    const y = 360 + Math.floor(i / 8) * 12 + Math.random() * 8;
+                    const size = Math.random() * 1.5 + 0.5;
+                    return (
+                      <circle
+                        key={`au-${i}`}
+                        cx={x}
+                        cy={y}
+                        r={size}
+                        fill="rgba(59, 130, 246, 0.6)"
+                        className="animate-pulse"
+                        style={{ animationDelay: `${i * 70}ms` }}
+                      />
+                    );
+                  })}
+                </g>
               </svg>
 
               {/* Connection line from user to selected server */}
