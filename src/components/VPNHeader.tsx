@@ -13,7 +13,7 @@ export function VPNHeader() {
         <div className="flex items-center gap-2 cursor-pointer" onClick={() => navigate('/dashboard')}>
           <Shield className="h-8 w-8 text-primary" />
           <span className="text-xl font-bold bg-vpn-gradient-primary bg-clip-text text-transparent">
-            SecureVPN
+            ShadoviaVPN
           </span>
         </div>
         

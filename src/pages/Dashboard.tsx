@@ -23,7 +23,7 @@ const Dashboard = () => {
           {/* Hero Section */}
           <div className="text-center space-y-6 mb-12 animate-fade-in-up">
             <h1 className="text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-primary-glow to-success-glow">
-              SecureVPN
+              ShadoviaVPN
             </h1>
             <p className="text-xl md:text-2xl text-foreground/90 max-w-2xl mx-auto font-medium">
               Free VPN • Military-grade encryption • Global servers • Zero logs
