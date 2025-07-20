@@ -35,34 +35,6 @@ export default function Landing() {
       <div className="absolute inset-0 bg-background/50" />
       
       <div className="relative z-10">
-        {/* Header */}
-        <header className="border-b bg-card/30 backdrop-blur-sm">
-          <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <Shield className="h-8 w-8 text-primary-glow" />
-              <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white via-primary-glow to-success-glow">
-                SecureVPN
-              </span>
-            </div>
-            
-            <div className="flex items-center gap-3">
-              <Button 
-                variant="ghost"
-                onClick={() => navigate('/login')}
-                className="text-foreground/80 hover:text-foreground"
-              >
-                Sign In
-              </Button>
-              <Button 
-                variant="vpn"
-                onClick={() => navigate('/signup')}
-                className="transition-transform hover:scale-105"
-              >
-                Get Started Free
-              </Button>
-            </div>
-          </div>
-        </header>
 
         <main className="container mx-auto px-4 py-16">
           {/* Hero Section */}
