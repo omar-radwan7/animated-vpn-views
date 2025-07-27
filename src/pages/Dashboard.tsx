@@ -60,37 +60,37 @@ const Dashboard = () => {
                 <SpeedTest isConnected={isConnected} />
               </div>
               
-              {/* Network Analysis */}
+              {/* Security Status */}
               <div className="animate-slide-in-left" style={{ animationDelay: "0.4s" }}>
                 <div className="bg-card/60 backdrop-blur-sm border-0 rounded-lg p-6 space-y-4">
                   <h3 className="font-semibold text-lg flex items-center gap-2">
                     <Activity className="h-5 w-5" />
-                    Network Analysis
+                    Security Monitor
                   </h3>
                   
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="p-3 bg-muted/30 rounded-lg text-center">
-                      <div className="text-2xl font-bold text-primary-glow">2.4GB</div>
-                      <div className="text-xs text-muted-foreground">Data Used Today</div>
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between p-3 bg-success/10 rounded-lg border border-success/20">
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 bg-success rounded-full animate-vpn-pulse" />
+                        <span className="text-sm font-medium">IP Address</span>
+                      </div>
+                      <span className="text-sm text-success font-mono">192.168.1.***</span>
                     </div>
-                    <div className="p-3 bg-muted/30 rounded-lg text-center">
-                      <div className="text-2xl font-bold text-success">99.2%</div>
-                      <div className="text-xs text-muted-foreground">Uptime This Month</div>
+                    
+                    <div className="flex items-center justify-between p-3 bg-primary/10 rounded-lg border border-primary/20">
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 bg-primary-glow rounded-full animate-vpn-pulse" />
+                        <span className="text-sm font-medium">Location</span>
+                      </div>
+                      <span className="text-sm text-primary-glow font-medium">Protected</span>
                     </div>
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">Security Level</span>
-                      <span className="text-success font-medium">Maximum</span>
-                    </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">DNS Protection</span>
-                      <span className="text-success font-medium">Active</span>
-                    </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">Kill Switch</span>
-                      <span className="text-success font-medium">Enabled</span>
+                    
+                    <div className="flex items-center justify-between p-3 bg-yellow-500/10 rounded-lg border border-yellow-500/20">
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 bg-yellow-500 rounded-full animate-vpn-pulse" />
+                        <span className="text-sm font-medium">Threats Blocked</span>
+                      </div>
+                      <span className="text-sm text-yellow-500 font-bold">47 Today</span>
                     </div>
                   </div>
                 </div>
