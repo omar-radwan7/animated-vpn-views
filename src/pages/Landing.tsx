@@ -51,7 +51,7 @@ export default function Landing() {
               <Button 
                 variant="vpnSuccess"
                 size="lg"
-                onClick={() => navigate('/signup')}
+                onClick={() => navigate('/dashboard')}
                 className="text-xl px-8 py-6 group shadow-vpn-success"
               >
                 Start Free Now
@@ -107,10 +107,10 @@ export default function Landing() {
                 <Button 
                   variant="vpn"
                   size="lg"
-                  onClick={() => navigate('/signup')}
+                  onClick={() => navigate('/dashboard')}
                   className="text-lg px-8 py-4 group"
                 >
-                  Create Free Account
+                  Get Started Now
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </CardContent>
