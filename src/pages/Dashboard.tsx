@@ -35,7 +35,7 @@ const Dashboard = () => {
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-primary-glow rounded-full animate-vpn-pulse" style={{ animationDelay: '0.5s' }} />
-                <span>60+ Countries</span>
+                <span>26 Countries</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-success rounded-full animate-vpn-pulse" style={{ animationDelay: '1s' }} />
@@ -96,7 +96,7 @@ const Dashboard = () => {
                 },
                 {
                   title: "Global Servers",
-                  description: "Access 60+ servers in 20+ countries",
+                  description: "Access servers in 26 countries",
                   icon: "🌍",
                   accent: "blue"
                 }
