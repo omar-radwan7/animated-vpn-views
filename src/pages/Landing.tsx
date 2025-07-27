@@ -66,7 +66,7 @@ export default function Landing() {
             <div className="flex items-center justify-center gap-8 mt-12 text-sm text-foreground/70">
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-success rounded-full animate-vpn-pulse" />
-                <span>10M+ Protected Users</span>
+                <span>Protected Usage</span>
               </div>
               <div className="flex items-center gap-2">
                 <div className="w-2 h-2 bg-primary-glow rounded-full animate-vpn-pulse" style={{ animationDelay: '0.5s' }} />
