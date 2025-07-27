@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Activity } from "lucide-react";
 import { VPNHeader } from "@/components/VPNHeader";
 import { VPNConnect } from "@/components/VPNConnect";
 import { RegionSelector } from "@/components/RegionSelector";
@@ -59,22 +60,37 @@ const Dashboard = () => {
                 <SpeedTest isConnected={isConnected} />
               </div>
               
-              {/* Speed Test Tips */}
+              {/* Network Analysis */}
               <div className="animate-slide-in-left" style={{ animationDelay: "0.4s" }}>
-                <div className="p-4 bg-card/40 backdrop-blur-sm rounded-lg border border-border/30">
-                  <h3 className="font-semibold mb-3 text-sm text-foreground/90">💡 Speed Test Tips</h3>
-                  <div className="space-y-2 text-xs text-foreground/70">
-                    <div className="flex items-start gap-2">
-                      <span className="text-success">•</span>
-                      <span>Connect to VPN first for protected speed testing</span>
+                <div className="bg-card/60 backdrop-blur-sm border-0 rounded-lg p-6 space-y-4">
+                  <h3 className="font-semibold text-lg flex items-center gap-2">
+                    <Activity className="h-5 w-5" />
+                    Network Analysis
+                  </h3>
+                  
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="p-3 bg-muted/30 rounded-lg text-center">
+                      <div className="text-2xl font-bold text-primary-glow">2.4GB</div>
+                      <div className="text-xs text-muted-foreground">Data Used Today</div>
                     </div>
-                    <div className="flex items-start gap-2">
-                      <span className="text-primary-glow">•</span>
-                      <span>Choose nearby servers for best performance</span>
+                    <div className="p-3 bg-muted/30 rounded-lg text-center">
+                      <div className="text-2xl font-bold text-success">99.2%</div>
+                      <div className="text-xs text-muted-foreground">Uptime This Month</div>
                     </div>
-                    <div className="flex items-start gap-2">
-                      <span className="text-yellow-500">•</span>
-                      <span>Close other apps for accurate results</span>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <div className="flex justify-between text-sm">
+                      <span className="text-muted-foreground">Security Level</span>
+                      <span className="text-success font-medium">Maximum</span>
+                    </div>
+                    <div className="flex justify-between text-sm">
+                      <span className="text-muted-foreground">DNS Protection</span>
+                      <span className="text-success font-medium">Active</span>
+                    </div>
+                    <div className="flex justify-between text-sm">
+                      <span className="text-muted-foreground">Kill Switch</span>
+                      <span className="text-success font-medium">Enabled</span>
                     </div>
                   </div>
                 </div>
