@@ -15,7 +15,7 @@ export default function Landing() {
     },
     {
       icon: Globe,
-      title: "60+ Global Servers",
+      title: "26 Global Servers",
       description: "Access content from anywhere in the world"
     },
     {
