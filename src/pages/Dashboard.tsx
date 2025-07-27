@@ -58,6 +58,27 @@ const Dashboard = () => {
               <div className="animate-slide-in-left" style={{ animationDelay: "0.2s" }}>
                 <SpeedTest isConnected={isConnected} />
               </div>
+              
+              {/* Speed Test Tips */}
+              <div className="animate-slide-in-left" style={{ animationDelay: "0.4s" }}>
+                <div className="p-4 bg-card/40 backdrop-blur-sm rounded-lg border border-border/30">
+                  <h3 className="font-semibold mb-3 text-sm text-foreground/90">💡 Speed Test Tips</h3>
+                  <div className="space-y-2 text-xs text-foreground/70">
+                    <div className="flex items-start gap-2">
+                      <span className="text-success">•</span>
+                      <span>Connect to VPN first for protected speed testing</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <span className="text-primary-glow">•</span>
+                      <span>Choose nearby servers for best performance</span>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <span className="text-yellow-500">•</span>
+                      <span>Close other apps for accurate results</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             {/* Right Column - Connection & Stats */}
